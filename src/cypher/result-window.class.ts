@@ -22,8 +22,6 @@ export default class ResultWindow {
       ViewColumn.Two,
       { retainContextWhenHidden: true }
     )
-
-    this.run(method)
   }
 
   async run(method: Method) {
@@ -52,7 +50,7 @@ export default class ResultWindow {
       this.panel.webview.html = getLoadingContent(this.cypher, params)
 
       // Run it
-      const res = await session[ method ](
+      const res = await session[method](
         tx => tx.run(this.cypher, params)
       )
 
